@@ -1,0 +1,63 @@
+site_name: The Study Group - Root Path
+site_description: 분기별로 목표를 정하고 매일 기록하며 성장하는 스터디
+site_url: https://the-study-group.github.io/root-path/
+
+# Repository
+repo_name: the-study-group/root-path
+repo_url: https://github.com/the-study-group/root-path
+
+# Theme
+theme:
+  name: material
+  language: ko
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 다크 모드로 전환
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 라이트 모드로 전환
+
+  features:
+    - navigation.instant      # 즉시 로딩
+    - navigation.tracking     # URL 추적
+    - navigation.top          # 맨 위로 버튼
+    - search.suggest          # 검색 제안
+    - search.highlight        # 검색 하이라이트
+    - content.code.copy       # 코드 복사 버튼
+
+# Extensions
+markdown_extensions:
+  - admonition              # 알림 상자
+  - pymdownx.details        # 접기/펼치기
+  - pymdownx.superfences    # 코드 펜스
+  - pymdownx.highlight:     # 코드 하이라이트
+      anchor_linenums: true
+  - pymdownx.inlinehilite   # 인라인 코드 하이라이트
+  - pymdownx.snippets       # 스니펫
+  - pymdownx.tabbed:        # 탭
+      alternate_style: true
+  - tables                  # 테이블
+  - footnotes              # 각주
+  - attr_list              # 속성 리스트
+  - md_in_html             # HTML 내 마크다운
+  - pymdownx.emoji:        # 이모지
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:                   # 목차
+      permalink: true
+
+# Plugins
+plugins:
+  - search:
+      lang: ko
