@@ -16,6 +16,8 @@
         <link rel="prev" href="../2025-11-25/">
       
       
+        <link rel="next" href="../2025-12-01/">
+      
       
         
       
@@ -25,7 +27,7 @@
     
     
       
-        <title>11-27 [독서] 클린코드 동시성2 - The Study Group - Root Path</title>
+        <title>11-27 [독서] 클린코드 - 동시성2 - The Study Group - Root Path</title>
       
     
     
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              11-27 [독서] 클린코드 동시성2
+              11-27 [독서] 클린코드 - 동시성2
             
           </span>
         </div>
@@ -608,7 +610,7 @@
   <span class="md-ellipsis">
     
   
-    11-25 [독서] 클린코드 냄새와 휴리스틱
+    11-25 [독서] 클린코드 - 냄새와 휴리스틱
   
 
     
@@ -645,7 +647,7 @@
   <span class="md-ellipsis">
     
   
-    11-27 [독서] 클린코드 동시성2
+    11-27 [독서] 클린코드 - 동시성2
   
 
     
@@ -663,7 +665,7 @@
   <span class="md-ellipsis">
     
   
-    11-27 [독서] 클린코드 동시성2
+    11-27 [독서] 클린코드 - 동시성2
   
 
     
@@ -725,7 +727,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        데드락
+        메서드 사이에 존재하는 의존성
       
     </span>
   </a>
@@ -736,7 +738,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        데드락 피하기 전략
+        데드락
       
     </span>
   </a>
@@ -747,7 +749,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        다중 스레드 코드 테스트
+        데드락 피하기 전략
       
     </span>
   </a>
@@ -756,6 +758,17 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다중 스레드 코드 테스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         에필로그
@@ -769,6 +782,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025-12-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12-01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -860,7 +901,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        데드락
+        메서드 사이에 존재하는 의존성
       
     </span>
   </a>
@@ -871,7 +912,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        데드락 피하기 전략
+        데드락
       
     </span>
   </a>
@@ -882,7 +923,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        다중 스레드 코드 테스트
+        데드락 피하기 전략
       
     </span>
   </a>
@@ -891,6 +932,17 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다중 스레드 코드 테스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         에필로그
@@ -920,17 +972,22 @@
   
 
 
-<h1 id="11-27-2">11-27 [독서] 클린코드 동시성2<a class="headerlink" href="#11-27-2" title="Permanent link">&para;</a></h1>
+<h1 id="11-27-2">11-27 [독서] 클린코드 - 동시성2<a class="headerlink" href="#11-27-2" title="Permanent link">&para;</a></h1>
 <p>클린코드 p408-p446</p>
+<hr />
 <h3 id="_1">웹소켓 예제<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>I/O - 소켓 사용, 데이터베이스 연결, 가상 메모리 스와핑 기다리기 등</li>
 <li>프로세서 - 수치 계산, 정규 표현식 처리, 가비지 컬렉션 등</li>
-<li>프로그램이 프로세서 연산에 시간이 걸린다면? 새로운 하드웨어를 추가하여 성능을 높인다.</li>
+<li>프로그램이 프로세서 연산에 시간이 걸린다면? 새로운 하드웨어를 추가하여 성능을 높인다.<ul>
 <li>CPU 사이클은 한계가 있기 때문에 스레드를 늘리는 건 해결책이 아님</li>
+</ul>
+</li>
 <li>I/O 연산에 시간에 시간을 보낸다면? 동시성이 성능을 높여줄 수 있음 -&gt; 한쪽이 I/O를 기다리는 동안 다른 쪽이 CPU 활용</li>
-<li>스레드를 관리하는 코드는 스레드만 관리</li>
+<li>스레드를 관리하는 코드는 스레드만 관리<ul>
 <li>동시성 문제는 그 자체만으로도 추적하기 어렵다 -&gt; 관리 전략이 변할 때 전체 코드에 미치는 영향이 작아지며 다른 책임을 간섭하지 않음</li>
+</ul>
+</li>
 <li>다중 스레드 프로그램에서는 단일 책임 원칙이 중요</li>
 </ul>
 <hr />
@@ -962,56 +1019,76 @@
 <li>동시 읽기/수정 문제를 일으킬 소지가 있는 코드</li>
 <li>동시성 문제를 방지하는 방법</li>
 </ul>
-<hr />
 <h3 id="_2">다중 스레드 환경에서 안전하지 않은 클래스<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>SimpleDateFormat</li>
 <li>데이터베이스 연결</li>
-<li>java.util 컨테이너 클래스</li>
+<li>java.util 컨테이너 클래스<ul>
 <li>java.util.concurrent: 스레드에 안전한 집합 클래스 제공 </li>
+</ul>
+</li>
 <li>서블릿</li>
 </ul>
-<hr />
+<h3 id="_3">메서드 사이에 존재하는 의존성<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
-<li>메서드 사이에 존재하는 의존성: 서버 기반 잠금</li>
+<li>서버 기반 잠금<ul>
 <li>코드 중복이 줄어들고 성능이 좋아진다.</li>
 <li>오류 발생가능성 감소</li>
 <li>스레드 정책이 서버 하나로 구현</li>
 <li>ADAPTER 패턴으로 API 변경 후 잠금 추가</li>
 <li>스레드에 안전하며 인터페이스가 확장된 집합 클래스 사용</li>
+</ul>
+</li>
 <li>동기화 영역은 작을수록 좋다</li>
 </ul>
-<h3 id="_3">데드락<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<hr />
+<h3 id="_4">데드락<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
-<li>상호 배제 Mutual exclusion</li>
+<li>상호 배제 Mutual exclusion<ul>
 <li>공유하는 자원을 여러 스레드가 동시에 사용하지 못하며 개수가 제한</li>
 <li>데이터베이스 연결, 쓰기용 파일 열기, 레코드 락, 세마포어 등</li>
-<li>잠금 &amp; 대기 Lock &amp; Wait</li>
+</ul>
+</li>
+<li>잠금 &amp; 대기 Lock &amp; Wait<ul>
 <li>스레드가 자원을 점유하면 작업을 마칠 때까지 필요한 나머지 자원까지 점유</li>
-<li>선점 불가 No preemption</li>
+</ul>
+</li>
+<li>선점 불가 No preemption<ul>
 <li>한 스레드가 다른 스레드로부터 자원을 빼앗지 못함</li>
-<li>순환 대기 Circular wait</li>
+</ul>
+</li>
+<li>순환 대기 Circular wait<ul>
 <li>순환 구조로 서로서로 필요한 자원을 점유</li>
 </ul>
-<h3 id="_4">데드락 피하기 전략<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+</li>
+</ul>
+<h3 id="_5">데드락 피하기 전략<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ul>
-<li>상호 배제 조건 깨기</li>
+<li>상호 배제 조건 깨기<ul>
 <li>동시에 사용해도 괜찮은 자원 사용</li>
 <li>스레드 수 이상으로 자원 수 사용</li>
 <li>자원을 점유하기 전 필요한 자원 확인</li>
-<li>잠금 &amp; 대기 조건 깨기</li>
+</ul>
+</li>
+<li>잠금 &amp; 대기 조건 깨기<ul>
 <li>각 자원을 점유하기 전 확인하여 하나라도 점유하지 못하면 모든 자원을 내놓고 다시 시작</li>
 <li>기아 Starvation: 한 스레드가 계속해서 필요한 자원 점유를 못함</li>
 <li>라이브락 Livelock: 여러 스레드가 동시에 진입하면 모든 자원을 점유하지 못하고 다시 시작 반복</li>
-<li>선점 불가 조건</li>
+</ul>
+</li>
+<li>선점 불가 조건<ul>
 <li>다른 스레드로부터 자원을 뺏어오는 방법</li>
-<li>순환 대기 조건 깨기</li>
+</ul>
+</li>
+<li>순환 대기 조건 깨기<ul>
 <li>모든 스레드가 일정 순서에 동의하고 그 순서로만 자원을 할당</li>
 <li>자원 할당 순서와 사용 순서가 상이하여 자원을 필요 이상으로 점유</li>
 <li>순서에 따라 자원 할당하기가 어려움</li>
 </ul>
+</li>
+</ul>
 <hr />
-<h3 id="_5">다중 스레드 코드 테스트<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">다중 스레드 코드 테스트<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClassWithTreadingProblem</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nextId</span><span class="p">;</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
@@ -1021,11 +1098,11 @@
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </code></pre></div>
 - nextId의 현재 값을 기억한다.
-- 스레드 두 개를 생성한다. 각 스레드가 takeNextId()를 한 번씩 호출한다.
-- nextId가 처음보다 2 증가했는지 확인한다.
+- 스레드 두 개를 생성한다. 각 스레드가 takeNextId()를 한 번씩 호출한다. 
+- nextId가 처음보다 2 증가했는지 확인한다. 
 - nextId가 2 대신에 1만 증가할 때까지 위 단계를 반복한다.</p>
 <hr />
-<h3 id="_6">에필로그<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_7">에필로그<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>Test Obsessed!</p>
 
 
