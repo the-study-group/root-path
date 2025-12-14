@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://the-study-group.github.io/root-path/2025-Q4/jaja/logs/12%EC%9B%94/2025-12-03/">
+        <link rel="canonical" href="https://the-study-group.github.io/root-path/2025-Q4/jaja/logs/12%EC%9B%94/2025-12-14/">
       
       
-        <link rel="prev" href="../2025-12-02/">
+        <link rel="prev" href="../2025-12-11/">
       
-      
-        <link rel="next" href="../2025-12-04/">
       
       
         
@@ -27,7 +25,7 @@
     
     
       
-        <title>12-03-Counting-Sort - The Study Group - Root Path</title>
+        <title>12-14-Radix-Sort - The Study Group - Root Path</title>
       
     
     
@@ -78,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#12-03-counting-sort" class="md-skip">
+        <a href="#12-14-radix-sort" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              12-03-Counting-Sort
+              12-14-Radix-Sort
             
           </span>
         </div>
@@ -816,37 +814,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    12-03-Counting-Sort
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../2025-12-03/" class="md-nav__link">
         
   
   
@@ -862,37 +833,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#counting-sort" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Counting Sort
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1014,10 +954,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../2025-12-14/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12-14-Radix-Sort
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1033,6 +1000,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#radix-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radix Sort
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1096,10 +1094,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#counting-sort" class="md-nav__link">
+  <a href="#radix-sort" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Counting Sort
+        Radix Sort
       
     </span>
   </a>
@@ -1126,26 +1124,28 @@
   
 
 
-<h1 id="12-03-counting-sort">12-03-Counting-Sort<a class="headerlink" href="#12-03-counting-sort" title="Permanent link">&para;</a></h1>
-<p><a href="https://blog.encrypted.gg/966">Counting Sort</a></p>
+<h1 id="12-14-radix-sort">12-14-Radix-Sort<a class="headerlink" href="#12-14-radix-sort" title="Permanent link">&para;</a></h1>
+<p><a href="https://blog.encrypted.gg/966">Radix Sort</a></p>
 <hr />
-<h3 id="counting-sort">Counting Sort<a class="headerlink" href="#counting-sort" title="Permanent link">&para;</a></h3>
-<p>수의 범위만큼 배열을 만들고 요소의 개수를 카운트하여 순서대로 정렬</p>
+<h3 id="radix-sort">Radix Sort<a class="headerlink" href="#radix-sort" title="Permanent link">&para;</a></h3>
+<p>1의 자릿수부터 N의 자릿수까지 낮은 자릿수부터 정렬</p>
 <ul>
-<li>수가 0에서 9999 사이라고 한다면 freq[10000] 배열을 선언해서 처리</li>
-<li>만약 수의 범위가 0에서 999,999,999 까지라고 하면 크기가 10억인 배열이 필요<ul>
-<li>메모리 제한이 512MB라고 해도 int 기준 대략 1.2억인 배열밖에 잡을 수 없음</li>
-</ul>
-</li>
-<li>수의 범위가 어느 정도 한정적일 때에만 카운팅 소트 가능 -&gt; 1000만 이하</li>
+<li>list[10] 배열을 선언하여 각 자릿수 인덱스에 리스트로 삽입
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>list[0]: [100, 10, 20]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>list[1]: [1, 101, 91]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>...
+</code></pre></div></li>
+<li>인덱스 0부터 각 요소들을 순서대로 배열에 정렬한 뒤, 10의 자리, 100의 자리 ... 똑같이 각 자릿수별로 정렬</li>
 </ul>
 <p><strong>시간복잡도</strong></p>
 <ul>
-<li>수의 범위=K개 </li>
-<li>N개의 수를 freq 배열에 추가 </li>
-<li>총 K칸의 값을 확인하여 출력/정렬 수행</li>
-<li><strong>O(N+K)</strong></li>
+<li>자릿수 최대 개수: D</li>
+<li>리스트의 개수: K</li>
+<li>O(D(N+K))</li>
+<li>리스트의 개수(K)는 N에 비해 무시 가능할만큼 작음: 최종적으로 O(DN)</li>
 </ul>
+<hr />
+<p>정렬은 직접 구현하지말고 <code>sort()</code>를 이용해라!</p>
 
 
 
