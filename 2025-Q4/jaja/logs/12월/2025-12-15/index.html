@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://the-study-group.github.io/root-path/2025-Q4/jaja/logs/12%EC%9B%94/2025-12-03/">
+        <link rel="canonical" href="https://the-study-group.github.io/root-path/2025-Q4/jaja/logs/12%EC%9B%94/2025-12-15/">
       
       
-        <link rel="prev" href="../2025-12-02/">
+        <link rel="prev" href="../2025-12-14/">
       
-      
-        <link rel="next" href="../2025-12-04/">
       
       
         
@@ -27,7 +25,7 @@
     
     
       
-        <title>12-03-Counting-Sort - The Study Group - Root Path</title>
+        <title>12-15-slow-query-log - The Study Group - Root Path</title>
       
     
     
@@ -78,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#12-03-counting-sort" class="md-skip">
+        <a href="#12-15-slow-query-log" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -114,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              12-03-Counting-Sort
+              12-15-slow-query-log
             
           </span>
         </div>
@@ -816,37 +814,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    12-03-Counting-Sort
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../2025-12-03/" class="md-nav__link">
         
   
   
@@ -862,37 +833,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#counting-sort" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Counting Sort
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1042,10 +982,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../2025-12-15/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12-15-slow-query-log
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1061,6 +1028,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        슬로우 쿼리 로그
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1124,10 +1122,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#counting-sort" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Counting Sort
+        슬로우 쿼리 로그
       
     </span>
   </a>
@@ -1154,25 +1152,18 @@
   
 
 
-<h1 id="12-03-counting-sort">12-03-Counting-Sort<a class="headerlink" href="#12-03-counting-sort" title="Permanent link">&para;</a></h1>
-<p><a href="https://blog.encrypted.gg/966">Counting Sort</a></p>
+<h1 id="12-15-slow-query-log">12-15-slow-query-log<a class="headerlink" href="#12-15-slow-query-log" title="Permanent link">&para;</a></h1>
+<p>Real MySQL 8.0 1 - 아키텍처</p>
 <hr />
-<h3 id="counting-sort">Counting Sort<a class="headerlink" href="#counting-sort" title="Permanent link">&para;</a></h3>
-<p>수의 범위만큼 배열을 만들고 요소의 개수를 카운트하여 순서대로 정렬</p>
+<h3 id="_1">슬로우 쿼리 로그<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>수가 0에서 9999 사이라고 한다면 freq[10000] 배열을 선언해서 처리</li>
-<li>만약 수의 범위가 0에서 999,999,999 까지라고 하면 크기가 10억인 배열이 필요<ul>
-<li>메모리 제한이 512MB라고 해도 int 기준 대략 1.2억인 배열밖에 잡을 수 없음</li>
-</ul>
-</li>
-<li>수의 범위가 어느 정도 한정적일 때에만 카운팅 소트 가능 -&gt; 1000만 이하</li>
-</ul>
-<p><strong>시간복잡도</strong></p>
-<ul>
-<li>수의 범위=K개 </li>
-<li>N개의 수를 freq 배열에 추가 </li>
-<li>총 K칸의 값을 확인하여 출력/정렬 수행</li>
-<li><strong>O(N+K)</strong></li>
+<li>서비스에서 사용되는 쿼리 중에서 어떤 쿼리가 문제인지 판단하는 데 도움</li>
+<li><code>long_query_time</code> 시스템 변수에 설정한 시간 이상 소요된 쿼리 기록</li>
+<li>테이블 혹은 디스크 파일로 저장</li>
+<li>Time(종료된 시점), 쿼리를 실행한 사용자 계정, 실행 시간, 잠금 대기 시간, 접근한 레코드와 전송한 처리 결과 수 확인</li>
+<li>슬로우 쿼리 통계</li>
+<li>실행 빈도 및 누적 실행 시간순 랭킹</li>
+<li>쿼리별 실행 횟수 및 누적 실행 시간 상세 정보</li>
 </ul>
 
 
