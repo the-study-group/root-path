@@ -77,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#for-details-see-man-4-crontabs" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1515,6 +1520,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2112,6 +2119,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2130,8 +2139,6 @@
   
   
 
-
-  <h1>3강</h1>
 
 <p>파일 시스템과 프로세스</p>
 <p>ㅇ 권한 및 그룹 설정
@@ -2391,6 +2398,234 @@ ex.
 <p>/etc/fstab - 파일 시스템 정보 저장 및 관리하는 설정 파일, 부팅시 마운트 정보 포함</p>
 </li>
 </ol>
+<p>ㅇ 셸(Shell)과 환경 설정
+1. 리눅스의 셸(Shell)의 개요
+- 명령어 해석기 : 사용자의 명령어 &lt;-&gt; 커널
+    - 로그인 시 사용자별 셸 지정
+    - 리다이렉션, 파이프, 셸 스크립트, 포그라운드/백그라운드 프로세스 실행
+- 셸의 분류
+    - 본셸(Bourne Shell): $프롬프트 -&gt; korn shell, bash shell (리눅스 표준셸, POSIX호환), z shell(확장 기능 제공)
+    - C셸 : % 프롬프트 -&gt; tc shell (BSD 계열에서 많이 사용, 명령어 편집 기능)
+- 사용할 수 있는 셸의 목록과 설정
+    - /etc/shells
+    - etc/passwd의 마지막 필드</p>
+<ol>
+<li>
+<p>환경 변수와 쉘 변수의 특징
+환경 변수(전역 변수)                        쉘 변수(지역 변수)
+전체 셸에서 사용 가능한 전역 변수   현재 로그인 셸에서만 사용 가능한 지역 변수
+서브 셸에 기능 상속 가능                    서브 셸에 기능 상속 불가능
+환경 변수 확인 명령:env                     쉘 변수 확인 명령 : set</p>
+</li>
+<li>
+<p>주요 환경 변수</p>
+<ul>
+<li>PATH, HOME, HOSTNAME, USER, DISPLAY, PS1, PWN, SHELL, TERM, TMOUT, LANG, PRINT, MAIL</li>
+</ul>
+</li>
+<li>
+<p>환경 변수의 설정과 해제</p>
+<ul>
+<li>설정 : export 변수명=값 -&gt; $변수명으로 참조</li>
+<li>해제 : unset 변수명</li>
+</ul>
+</li>
+<li>
+<p>환경 설정 파일 - 셸 시작 시 참조하여 자동 실행</p>
+</li>
+<li>주요 환경 설정 파일 (bash shell)<ul>
+<li>공통 설정 : /etc/progile, /etc/bashrc</li>
+<li>사용자 설정 : ~/.bash_profile(로그인 시), ~/.bash_history(명령어 재사용), ~/.bashrc(alias와 자동실행),
+                ~/.bash_logout(로그아웃 직전)
+ㄴ 리눅스에서 파일명 앞에 .이 붙어있으면 숨김파일이라는 뜻 ls -a를 해야 보이는 파일들</li>
+</ul>
+</li>
+<li>
+<p>/etc/profile.d : 특정 응용 프로그램 시작 시 자동 실행할 스크립트 경로 저장</p>
+</li>
+<li>
+<p>History 기능 - .bash_history에 저장된 명령어 재사용</p>
+</li>
+<li>사용 방법<ul>
+<li>history : 명령어 목록 출력</li>
+<li>상/하 화살표 -&gt; 이전/이후 명령어</li>
+<li>!! (마지막 명령어), !n(n번째 명령어), !-n(현재 이전 n번째 명령어), !string(string으로 시작하는 최근 명령어)
+    !$ 혹은 !!$(마지막 명령의 인자), !*(마지막 명령의 모든 인자), !?string? (string을 포함하는 가장 최근 명령어)</li>
+</ul>
+</li>
+<li>
+<p>History 관련 환경 변수</p>
+<ul>
+<li>HISTSIZE, HISTFILE, HISTFILESIZE, HISTTIMEFORMAT, HISTCONTROL</li>
+</ul>
+</li>
+<li>
+<p>프로세스의 개요</p>
+</li>
+<li>프로그램이 실행되 ㄴ상태 -&gt; CPU, 메모리 등 자원을 할당받아 실행된 상태<ul>
+<li>PID(Process ID)로 관리, init(최초 실행 프로세스, PID는 1) -&gt; CentOS7부터 systemd가 최초 실행되면 PID가 1이 됨</li>
+</ul>
+</li>
+<li>
+<p>프로세스의 유형
+    포그라운드 프로세스     - 사용자와 상호작용하는 프로세스
+    (Foreground)          - 터미널에 직접 연결되어 입출력을 주고 받는 프로세스
+                          - 명령 입력 후 수행 종료까지 기다려야 하는 프로세스
+                          - 화면에서 실행되는 것이 보이는 프로세스
+                          - ex.응용 프로그램, 명령어 등
+    백그라운드 프로세스     - 사용자와 직접적인 대화를 하지 않고 뒤에서 실행되는 프로세스
+    (Background)          - 사용자의 입력에 관계없이 실행되는 프로세스
+                          - 실행은 되지만 화면에 나타나지 않고 실행되는 프로세스
+                          - ex. 시스템 프로그램, 데몬 등</p>
+</li>
+<li>
+<p>프로세스 실행 방식 및 관련 용어</p>
+</li>
+<li>fork() : 기본 프로세스를 복제하여 실행 -&gt; 부모 프로세스와 자식 프로세스의 관계</li>
+<li>exec() : 새로운 프로세스로 변경되어 실행 -&gt; 하나의 프로세스만 남게 됨</li>
+<li>데몬(deamon) : (부팅 시 자동으로 실행되는) 백그라운드 프로세스<ul>
+<li>일반적으로 서비스에 대한 요청을 담당</li>
+<li>데몬 실행 방법 : Stand Alone (메모리에 단독 상주, httpd 등),
+                 inted 타입 데몬 (커널 2.4부터 xinetd 슈퍼 데몬에 의해 실행, FTP 등)
+※ CentOS7부터는 systemd에 의해 관리</li>
+</ul>
+</li>
+<li>
+<p>시그널(Signal) : 프로세스에게 전달할 수 있는 이벤트(신호) -&gt; kill 명령 사용, kill -l로 가능한 시그널 목록 확인</p>
+<ul>
+<li>대표적인 시그널 : SIGINT(2), SIGKILL(9), SIGTERM(15), SIGSTOP(19), SIGSTP(20, CTRL+Z, 대기 전환)</li>
+</ul>
+</li>
+<li>
+<p>ps - 실행 중인 프로세스의 목록/상태 정보 표시 -&gt; CPU 사용도가 낮은 순</p>
+</li>
+<li>
+<p>ps&lt;옵션&gt;</p>
+<ul>
+<li>옵션: a(실행 중인 모든 프로세스), e(모든 프로세스), u(사용자 이름, 시작 시간), x(터미널 정보, 모든 프로세스),
+        l(상세 정보 표시)</li>
+</ul>
+</li>
+<li>
+<p>pstree - 실행 중인 프로세스의 목록을 tree형식으로 표시</p>
+</li>
+<li>
+<p>pstree&lt;옵션&gt;</p>
+<ul>
+<li>옵션 :-p(PID표시), -n(PID정렬), -a(명령 인자 포함), -h(현재 프로세스와 부모 프로세스 강조)</li>
+</ul>
+</li>
+<li>
+<p>jobs - 작업(프로세스)의 동작 상태 표시</p>
+</li>
+<li>
+<p>jobs&lt;옵션&gt;&lt;작업번호&gt;</p>
+<ul>
+<li>옵션 :-l (프로세스 그룹 ID 표시), -n(프로세스 그룹 중 대표 PID 표시), -p(PID를 한 라인씩 표시)</li>
+</ul>
+</li>
+<li>
+<p>fg - 백그라운드에서 포그라운드로 작업 전환</p>
+</li>
+<li>
+<p>fg&lt;작업번호&gt; -&gt; 작업 번호가 없을 경우 현재 백그라운드 작업을 대상으로 함</p>
+</li>
+<li>
+<p>프로세스 관리 명령의 사용 예
+[LinuxMaster]#ping 8.8.8.8 &gt; NULL &amp;     =&gt; 핑 8.8.8.8과 IP통신 가능한지 확인한다는 것 멈추지 않고 계속 동작하고 화면에 출력한다. 그렇기 때문에 그것을 NULL로 &gt; 리다이렉트 하겠다. 즉, 화면에 안 보이게 하겠다는 뜻. &amp;은 리눅스 명령이 백그라운드로 실행한다는 것
+[1] 8480
+[LinuxMaster]#jobs                      =&gt; 작업 상태 표시시
+[1] + Running   ping 8.8.8.8 &gt; NULL &amp;   =&gt; 조금 전 작업이 돌고 있다는 것 확인 가능
+[LinuxMaster]#fg                        =&gt; 작업 번호 안 줬기 때문에 현재 프로세스 뽑아냄
+ping 8.8.8.8 &gt; NULL                     =&gt; 다시 포그라운드로 가져옴
+^Z                                      =&gt; 컨트롤 제트. 멈춤.
+[1] + Stopped   ping 8.8.8.8 &gt; NULL
+[LinuxMaster]#fg                        =&gt; 다시 포그라운드로 만든 것
+ping 8.8.8.8 &gt; NULL
+^C[LinuxMaster]#                        =&gt; 컨트롤 씨로 종료</p>
+</li>
+<li>
+<p>kill - 프로세스에 시그널(이벤트) 전달</p>
+</li>
+<li>
+<p>kill&lt;옵션&gt;<PID|작업번호></p>
+<ul>
+<li>옵션 : -l(시그널 종류), -s(시그널 번호 혹은 시그널 이름 지정), -1(HUP, 재시작), -9(SIGKILL,강제 종료)</li>
+</ul>
+</li>
+<li>
+<p>killall - 동일한 데몬의 여러 프로세스를 한번에 종료</p>
+</li>
+<li>
+<p>killall&lt;옵션&gt;[프로세스명]</p>
+<ul>
+<li>-g(그룹지정), -i(확인 후 종료), -l(시그널 목록), -v(상세 정보)</li>
+</ul>
+</li>
+<li>
+<p>nice - 우선순위 변경(설정)하여 프로세스 실행 -&gt; NI 값 이용</p>
+</li>
+<li>
+<p>nice&lt;옵션&gt;[프로세스명]</p>
+<ul>
+<li>옵션: -n조정값 -조정값, --adjustment조정값 -&gt; 아무런 옵션값을 안 주면 기본조정값은 10</li>
+<li>NI 값 범위 : -20 ~ 19 (숫자가 낮을수록 우선순위 높음) </li>
+<li>10 증가는 -10, 10 감소는 --10 (짝대기 하나는 옵션이란 뜻이니까)</li>
+<li>일반 사용자는 NI값 증가만 가능</li>
+</ul>
+</li>
+<li>
+<p>renice - 실행 중인 프로세스의 우선순위 변경 (설정값 재지정이라는 말)</p>
+</li>
+<li>
+<p>renice&lt;옵션&gt;<NI값>[PID]</p>
+<ul>
+<li>-p(PID 지정), -u(사용자 지정), -g(GID 지정)</li>
+</ul>
+</li>
+<li>
+<p>top - 시스템 운영 상태 혹은 프로세스 상태 확인</p>
+</li>
+<li>
+<p>top&lt;옵션&gt;[PID]</p>
+<ul>
+<li>옵션 : -d(실시간 화면 출력 시간 지정, 기본 5초), -p(PID 지정)</li>
+</ul>
+</li>
+<li>
+<p>nohup - 프로세스 중단 없이 백그라운드로 작업 실행 -&gt; 로그아웃 되어도 계속 실행</p>
+</li>
+<li>
+<p>표준 출력 내용을 nohup.out에 기록
+[LinuxMaster]#nohup ping 8.8.8.8 &amp;
+[1] 11121
+[LinuxMaster]#nohup : ignoring input and appending output to 'nohup.out'
+^C</p>
+</li>
+<li>
+<p>cron - crond 데몬에 의해 반복적인 작업 실행</p>
+</li>
+<li>설정 파일 : /etc/crontab</li>
+<li>관련 명령 : crontab&lt;옵션&gt; &lt;파일명&gt;<ul>
+<li>옵션:
+    -l (설정 내용 출력)
+    -e (crontab 작성, 수정)
+    -r (crontab 내용 삭제)
+    -u (지정한 사용자의 스케줄 수정)
+[LinuxMaster]#cat /etc/crontab
+...</li>
+</ul>
+</li>
+</ol>
+<h1 id="for-details-see-man-4-crontabs">For details see man 4 crontabs<a class="headerlink" href="#for-details-see-man-4-crontabs" title="Permanent link">&para;</a></h1>
+<h1 id="example-of-job-definition">Example of job definition:<a class="headerlink" href="#example-of-job-definition" title="Permanent link">&para;</a></h1>
+<h1 id="-minute0-59">.--------------------- minute(0-59)<a class="headerlink" href="#-minute0-59" title="Permanent link">&para;</a></h1>
+<h1 id="-hour-0-23">| .---------------- hour (0-23)<a class="headerlink" href="#-hour-0-23" title="Permanent link">&para;</a></h1>
+<h1 id="-day-of-month-1-31">| | .------------- day of month (1-31)<a class="headerlink" href="#-day-of-month-1-31" title="Permanent link">&para;</a></h1>
+<h1 id="-month1-12-or-janfebmarapr">| | | .--------- month(1-12) OR jan,feb,mar,apr ...<a class="headerlink" href="#-month1-12-or-janfebmarapr" title="Permanent link">&para;</a></h1>
+<h1 id="-day-of-week-0-6-sunday0-or-7-or-sunmontuewedthufrisat">| | | | .------ day of week (0-6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat<a class="headerlink" href="#-day-of-week-0-6-sunday0-or-7-or-sunmontuewedthufrisat" title="Permanent link">&para;</a></h1>
+<h1 id="_1">| | | | |<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="usr-name-command-to-be-executed">* * * * * usr-name command to be executed<a class="headerlink" href="#usr-name-command-to-be-executed" title="Permanent link">&para;</a></h1>
 
 
 
